@@ -1,0 +1,751 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Royal Estates - Luxury Properties</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f5ef;
+            color: #252525;
+        }
+
+        /* HEADER */
+
+        header {
+            background-color: #171717;
+            color: white;
+            padding: 22px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            color: #d4af65;
+            letter-spacing: 2px;
+        }
+
+        header span {
+            color: white;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 12px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #d4af65;
+        }
+
+        /* HERO SECTION */
+
+        .hero {
+            height: 480px;
+
+            background:
+            linear-gradient(rgba(0,0,0,0.55),
+            rgba(0,0,0,0.55)),
+            url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h2 {
+            font-size: 42px;
+            color: #e2c17d;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #c29b55;
+            color: white;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 5px;
+            margin-top: 12px;
+        }
+
+        .btn:hover {
+            background-color: #987239;
+        }
+
+        /* SEARCH SECTION */
+
+        .search-section {
+            text-align: center;
+            padding: 45px 5%;
+        }
+
+        .search-section h2,
+        .properties h2,
+        .comparison h2,
+        .about h2,
+        .contact h2 {
+            color: #9c793e;
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+        .search-box {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px #00000015;
+        }
+
+        input, select {
+            padding: 13px;
+            margin: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: #b18b4c;
+        }
+
+        button {
+            background-color: #b18b4c;
+            color: white;
+            padding: 13px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #80602e;
+        }
+
+        /* PROPERTY SECTION */
+
+        .properties {
+            padding: 50px 6%;
+            text-align: center;
+        }
+
+        .subtitle {
+            margin-bottom: 30px;
+            color: #777;
+        }
+
+        .property-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* PROPERTY CARDS */
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px #00000015;
+            text-align: left;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 8px 22px #00000025;
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card h3 {
+            color: #292929;
+            margin-bottom: 12px;
+        }
+
+        .card h4 {
+            color: #ae853f;
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #666;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        /* COMPARISON TABLE */
+
+        .comparison {
+            padding: 50px 6%;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 15px #00000015;
+        }
+
+        th {
+            background-color: #202020;
+            color: #d4af65;
+            padding: 18px;
+        }
+
+        td {
+            padding: 16px;
+            border: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f4ead7;
+        }
+
+        /* ABOUT SECTION */
+
+        .about {
+            background-color: #eee7da;
+            padding: 55px 6%;
+            text-align: center;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px #00000010;
+            transition: 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-box h3 {
+            color: #9c793e;
+            margin-bottom: 15px;
+        }
+
+        .feature-box p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* CONTACT SECTION */
+
+        .contact {
+            padding: 50px 6%;
+            text-align: center;
+        }
+
+        .contact p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact form {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .contact input,
+        .contact textarea {
+            display: block;
+            width: 100%;
+            margin: 15px 0;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background-color: #171717;
+            color: white;
+            text-align: center;
+            padding: 35px;
+        }
+
+        footer h2 {
+            color: #d4af65;
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            margin: 10px;
+            color: #ccc;
+        }
+
+        /* RESPONSIVE DESIGN */
+
+        @media (max-width: 900px) {
+
+            .property-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                margin-top: 18px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+
+            .hero-content h2 {
+                font-size: 30px;
+            }
+
+            .property-container,
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box input,
+            .search-box select {
+                width: 90%;
+            }
+
+            .comparison {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 600px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>ROYAL <span>ESTATES</span></h1>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#properties">Properties</a>
+            <a href="#compare">Compare</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HOME -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h2>Find Your Dream Luxury Home</h2>
+
+            <p>
+                Discover beautiful houses, luxury apartments
+                and premium rental properties.
+            </p>
+
+            <a href="#properties" class="btn">
+                Explore Properties
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <section class="search-section">
+
+        <h2>Find Your Perfect Property</h2>
+
+        <div class="search-box">
+
+            <input type="text" placeholder="Enter Location">
+
+            <select>
+                <option>Property Type</option>
+                <option>House</option>
+                <option>Apartment</option>
+                <option>Villa</option>
+            </select>
+
+            <select>
+                <option>Price Range</option>
+                <option>Below 50 Lakhs</option>
+                <option>50 Lakhs - 1 Crore</option>
+                <option>Above 1 Crore</option>
+            </select>
+
+            <select>
+                <option>Buy / Rent</option>
+                <option>Buy</option>
+                <option>Rent</option>
+            </select>
+
+            <button type="button">Search</button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROPERTIES -->
+
+    <section class="properties" id="properties">
+
+        <h2>Our Exclusive Properties</h2>
+
+        <p class="subtitle">
+            Discover beautiful properties for your dream lifestyle.
+        </p>
+
+        <div class="property-container">
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800" alt="Luxury Villa">
+
+                <div class="card-content">
+
+                    <h3>Luxury Modern Villa</h3>
+                    <h4>₹1.5 Crore</h4>
+                    <p>📍 Vijayawada, Benz Circle</p>
+                    <p>🛏 4 Bedrooms | 🚿 3 Bathrooms</p>
+                    <p>📐 2500 Sq.ft</p>
+                    <p>✨ Garden, Swimming Pool, Parking</p>
+
+                    <a href="#contact" class="btn">View Details</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800" alt="Premium Apartment">
+
+                <div class="card-content">
+
+                    <h3>Premium Apartment</h3>
+                    <h4>₹75 Lakhs</h4>
+                    <p>📍 Hyderabad, Gachibowli</p>
+                    <p>🛏 3 Bedrooms | 🚿 2 Bathrooms</p>
+                    <p>📐 1600 Sq.ft</p>
+                    <p>✨ Gym, Lift, Security</p>
+
+                    <a href="#contact" class="btn">View Details</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800" alt="Family House">
+
+                <div class="card-content">
+
+                    <h3>Beautiful Family House</h3>
+                    <h4>₹55 Lakhs</h4>
+                    <p>📍 Guntur, Brodipet</p>
+                    <p>🛏 3 Bedrooms | 🚿 2 Bathrooms</p>
+                    <p>📐 1800 Sq.ft</p>
+                    <p>✨ Garden, Balcony, Parking</p>
+
+                    <a href="#contact" class="btn">View Details</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800" alt="Rental Apartment">
+
+                <div class="card-content">
+
+                    <h3>Luxury Rental Apartment</h3>
+                    <h4>₹25,000 / Month</h4>
+                    <p>📍 Vijayawada, Governorpet</p>
+                    <p>🛏 2 Bedrooms | 🚿 2 Bathrooms</p>
+                    <p>📐 1200 Sq.ft</p>
+                    <p>✨ Lift, Parking, Water Supply</p>
+
+                    <a href="#contact" class="btn">View Details</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800" alt="Royal Villa">
+
+                <div class="card-content">
+
+                    <h3>Royal Premium Villa</h3>
+                    <h4>₹2 Crore</h4>
+                    <p>📍 Hyderabad, Jubilee Hills</p>
+                    <p>🛏 5 Bedrooms | 🚿 4 Bathrooms</p>
+                    <p>📐 3200 Sq.ft</p>
+                    <p>✨ Pool, Garden, Smart Home</p>
+
+                    <a href="#contact" class="btn">View Details</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800" alt="Rental House">
+
+                <div class="card-content">
+
+                    <h3>Modern Rental House</h3>
+                    <h4>₹18,000 / Month</h4>
+                    <p>📍 Vijayawada, Poranki</p>
+                    <p>🛏 2 Bedrooms | 🚿 1 Bathroom</p>
+                    <p>📐 1000 Sq.ft</p>
+                    <p>✨ Balcony, Parking, Garden</p>
+
+                    <a href="#contact" class="btn">View Details</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMPARISON TABLE -->
+
+    <section class="comparison" id="compare">
+
+        <h2>Compare Properties</h2>
+
+        <p class="subtitle">
+            Choose the right property for your needs.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>Features</th>
+                <th>Modern Villa</th>
+                <th>Apartment</th>
+                <th>Family House</th>
+            </tr>
+
+            <tr>
+                <td>Price</td>
+                <td>₹1.5 Crore</td>
+                <td>₹75 Lakhs</td>
+                <td>₹55 Lakhs</td>
+            </tr>
+
+            <tr>
+                <td>Location</td>
+                <td>Vijayawada</td>
+                <td>Hyderabad</td>
+                <td>Guntur</td>
+            </tr>
+
+            <tr>
+                <td>Bedrooms</td>
+                <td>4</td>
+                <td>3</td>
+                <td>3</td>
+            </tr>
+
+            <tr>
+                <td>Bathrooms</td>
+                <td>3</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+
+            <tr>
+                <td>Area</td>
+                <td>2500 Sq.ft</td>
+                <td>1600 Sq.ft</td>
+                <td>1800 Sq.ft</td>
+            </tr>
+
+            <tr>
+                <td>Amenities</td>
+                <td>Pool, Garden</td>
+                <td>Gym, Lift</td>
+                <td>Parking, Garden</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <h2>Why Choose Royal Estates?</h2>
+
+        <div class="features">
+
+            <div class="feature-box">
+
+                <h3>🏡 Premium Properties</h3>
+
+                <p>
+                    Explore beautiful and luxurious houses,
+                    villas and apartments.
+                </p>
+
+            </div>
+
+            <div class="feature-box">
+
+                <h3>💎 Best Locations</h3>
+
+                <p>
+                    Find properties in excellent locations
+                    at affordable prices.
+                </p>
+
+            </div>
+
+            <div class="feature-box">
+
+                <h3>🤝 Trusted Service</h3>
+
+                <p>
+                    We make your property search
+                    simple and comfortable.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+
+        <h2>Contact Us</h2>
+
+        <p>
+            Interested in buying or renting a property?
+        </p>
+
+        <form>
+
+            <input type="text" placeholder="Enter Your Name" required>
+
+            <input type="email" placeholder="Enter Your Email" required>
+
+            <input type="tel" placeholder="Enter Phone Number">
+
+            <textarea placeholder="Enter Your Message"></textarea>
+
+            <button type="submit">Send Message</button>
+
+        </form>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h2>ROYAL ESTATES</h2>
+
+        <p>Your Dream Home, Our Priority.</p>
+
+        <p>© 2026 Royal Estates. All Rights Reserved.</p>
+
+    </footer>
+
+</body>
+</html>
